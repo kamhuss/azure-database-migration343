@@ -5,7 +5,7 @@
 - To enhance security, Microsoft Entra ID integration was employed to define access roles, adding an extra layer of control and protection.
 
 # Installation instructions
-- Azure portal, Microsoft Remote Desktop, SQL Server, SQL Server Management Studio (SSMS), Azure Data Studio
+- Azure portal, Microsoft Remote Desktop, SQL Server, SQL Server Management Studio (SSMS), Azure Data Studio, integration runtime
 
 # Tasks completed
 - Used AiCore provided subcription, created a Virtual Machine (VM) on Azure portal.
@@ -16,7 +16,7 @@
 - We installed and configure Azure Data Studio on your production Windows VM. We then established a connection to the existing on-premise database.
 - Using Azure Data Studio, we established a connection to the newly created Azure SQL Database. This connection served as the conduit for schema and data migration between the two databases.
 - After establishing connections to both databases, we installed the SQL Server Schema Compare extension within Azure Data Studio. Then used this extension to compare and subsequently migrate the schema from the on-premise database to the Azure SQL Database.
-- For data migration phase, we installed the Azure SQL Migration extension within Azure Data Studio. This facilitated the smooth transfer of data from our on-premise database to the Azure SQL Database.
+- For data migration phase, we installed the Azure SQL Migration extension within Azure Data Studio. We also had to install integration runtime. This facilitated the smooth transfer of data from our on-premise database to the Azure SQL Database.
 - To confirm the success of the database migration process, we carried out a comprehensive validation by inspecting the data, schema, and any configurations of the migrated database, ensuring that the migration has been executed successfully and adheres to principles of data integrity.
 
 # File structure of the project
