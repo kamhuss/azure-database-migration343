@@ -5,19 +5,22 @@
 - To enhance security, Microsoft Entra ID integration was employed to define access roles, adding an extra layer of control and protection.
 
 # Installation instructions
-- Azure portal, Microsoft Remote Desktop, SQL Server and SQL Server Management Studio (SSMS).
+- Azure portal, Microsoft Remote Desktop, SQL Server, SQL Server Management Studio (SSMS), Azure Data Studio
 
-# Usage instructions
-- Using AiCore provided subcription, create a Virtual Machine (VM) on Azure portal.
-- Use the RDP protocol and Microsoft Remote Desktop to establish a secure connection to the VM.
-- Install SQL Server and SQL Server Management Studio (SSMS) on the VM.
-- Create the production database by restoring it from provided backup file. The backup file corresponds to the renowned Microsoft SQL Server database known as AdventureWorks.
+# Tasks completed
+- Used AiCore provided subcription, created a Virtual Machine (VM) on Azure portal.
+- Used the RDP protocol and Microsoft Remote Desktop to establish a secure connection to the VM.
+- Installed SQL Server and SQL Server Management Studio (SSMS) on the VM.
+- Created the production database by restoring it from provided backup file. The backup file corresponds to the renowned Microsoft SQL Server database known as AdventureWorks.
+- Created an Azure SQL Database, which served as the target for migrating our on-premise database. We ensured that the associated SQL Server uses SQL login as the chosen authentication method. Additionally, we confirmed that the SQL Server has the appropriate firewall rules, specifically with our IP address added to the firewall settings.
+- We installed and configure Azure Data Studio on your production Windows VM. We then established a connection to the existing on-premise database.
+- Using Azure Data Studio, we established a connection to the newly created Azure SQL Database. This connection served as the conduit for schema and data migration between the two databases.
+- After establishing connections to both databases, we installed the SQL Server Schema Compare extension within Azure Data Studio. Then used this extension to compare and subsequently migrate the schema from the on-premise database to the Azure SQL Database.
+- For data migration phase, we installed the Azure SQL Migration extension within Azure Data Studio. This facilitated the smooth transfer of data from our on-premise database to the Azure SQL Database.
+- To confirm the success of the database migration process, we carried out a comprehensive validation by inspecting the data, schema, and any configurations of the migrated database, ensuring that the migration has been executed successfully and adheres to principles of data integrity.
 
 # File structure of the project
-- Data extraction. In "data_extraction.py" we store methods responsible for the upload of data into pandas data frame from different sources.
-- Data cleaning. In "data_cleaning.py" we develop the class DataCleaning that clean different tables, which we uploaded in "data_extraction.py".
-- Uploading data into the database. We write DatabaseConnector class "database_utils.py", which initiates the database engine based on credentials provided in ".yml" file.
-- "main.py" contains methods, which allow uploading data directly into the local database. 
+- README.md file contains all the updates
 
 # License information
 - Non required. Public repository.
