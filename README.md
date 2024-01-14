@@ -22,6 +22,26 @@
 - Azure Blob Storage account was created to serve as a secure online repository for your database backups. The backup file was uploaded to the Blob Storage container. This provided an extra layer of backup protection by making a redundant copy stored remotely.
 - A development environment was created by provisioning a new Windows VM that mirrors the production environment including installing the releveant Install SQL Server and software on this VM to mimic the necessary database infrastructure. The databse backup was restored into this environment. The development environemnt can be used as a controlled and isolated environment where applications and software can be tested, developed, and experimented with, all without impacting the production systems.
 - On your development Windows VM, SSMS was used to establish a management task that automates regular backups of the development database. The maintenance plan was configured for automated weekly backup schedule to ensure consistent protection for the evolving work and to simplify recovery for the development environment.
+- Deliberately remove critical data from your production database to replicate a scenario where data integrity is compromised. You have the flexibility to choose which data to remove, but ensure that you document this simulated data loss meticulously. This documentation will serve as a blueprint for your recovery testing.
+After completing the simulation, confirm its success by examining the Azure SQL Database using the connection already established in Azure Data Studio.
+
+SELECT *
+FROM HumanResources.Employee
+
+Results were 290 entries
+
+-- Intentional Deletion
+DELETE TOP (100)
+FROM HumanResources.Employee
+
+Then queried
+
+SELECT *
+FROM HumanResources.Employee
+
+Results were 
+
+
 
 # File structure of the project
 - README.md file contains all the updates
