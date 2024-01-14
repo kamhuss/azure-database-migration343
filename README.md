@@ -13,7 +13,7 @@
 - Installed SQL Server and SQL Server Management Studio (SSMS) on the VM.
 - Created the production database by restoring it from provided backup file. The backup file corresponds to the renowned Microsoft SQL Server database known as AdventureWorks.
 - Created an Azure SQL Database, which served as the target for migrating our on-premise database. We ensured that the associated SQL Server uses SQL login as the chosen authentication method. Additionally, we confirmed that the SQL Server has the appropriate firewall rules, specifically with our IP address added to the firewall settings.
-- We installed and configure Azure Data Studio on your production Windows VM. We then established a connection to the existing on-premise database.
+- We installed and configured Azure Data Studio on the production Windows VM. We then established a connection to the existing on-premise database.
 - Using Azure Data Studio, we established a connection to the newly created Azure SQL Database. This connection served as the conduit for schema and data migration between the two databases.
 - After establishing connections to both databases, we installed the SQL Server Schema Compare extension within Azure Data Studio. Then used this extension to compare and subsequently migrate the schema from the on-premise database to the Azure SQL Database.
 - For data migration phase, we installed the Azure SQL Migration extension within Azure Data Studio. We also had to install integration runtime. This facilitated the smooth transfer of data from our on-premise database to the Azure SQL Database.
