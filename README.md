@@ -22,25 +22,8 @@
 - Azure Blob Storage account was created to serve as a secure online repository for your database backups. The backup file was uploaded to the Blob Storage container. This provided an extra layer of backup protection by making a redundant copy stored remotely.
 - A development environment was created by provisioning a new Windows VM that mirrors the production environment including installing the releveant Install SQL Server and software on this VM to mimic the necessary database infrastructure. The databse backup was restored into this environment. The development environemnt can be used as a controlled and isolated environment where applications and software can be tested, developed, and experimented with, all without impacting the production systems.
 - On your development Windows VM, SSMS was used to establish a management task that automates regular backups of the development database. The maintenance plan was configured for automated weekly backup schedule to ensure consistent protection for the evolving work and to simplify recovery for the development environment.
-- Deliberately remove critical data from your production database to replicate a scenario where data integrity is compromised. You have the flexibility to choose which data to remove, but ensure that you document this simulated data loss meticulously. This documentation will serve as a blueprint for your recovery testing.
-After completing the simulation, confirm its success by examining the Azure SQL Database using the connection already established in Azure Data Studio.
-
-Open Azure Data Studio on the production VM
-SELECT *
-FROM HumanResources.Employee
-
-Results were 290 entries
-
--- Intentional Deletion
-DELETE TOP (100)
-FROM HumanResources.Employee
-
-Then queried
-
-SELECT *
-FROM HumanResources.Employee
-
-Results were 
+- In the production database we mimicked data loss. We deliberately removed critical data from your production database to replicate a scenario where data integrity is compromised. We confirmed its success by examining the Azure SQL Database using the connection already established in Azure Data Studio. Before the data loss, the SQL query was carried out: SELECT * FROM Person.EmailAddress. The results were 19972 entries. For data loss, the intention deletion SQL query was carried out: DELETE TOP (100) FROM Person.EmailAddress. To confirm the success of the deletion, the SQL query was repeated: SELECT * FROM Person.EmailAddress. The results were 19872 entries, which is 100 less than the original production database.
+- We used Azure SQL Database Backup to restore the production database to a point just before the simulated data loss occurred, approximately 2 hours before. The success of the restored data was validated by examining the restored data through the connection in Azure Data Studio using the SQL query previously used to check that the entries were 19972.
 
 
 
