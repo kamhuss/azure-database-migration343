@@ -25,6 +25,7 @@
 - Deliberately remove critical data from your production database to replicate a scenario where data integrity is compromised. You have the flexibility to choose which data to remove, but ensure that you document this simulated data loss meticulously. This documentation will serve as a blueprint for your recovery testing.
 After completing the simulation, confirm its success by examining the Azure SQL Database using the connection already established in Azure Data Studio.
 
+Open Azure Data Studio on the production VM
 SELECT *
 FROM HumanResources.Employee
 
